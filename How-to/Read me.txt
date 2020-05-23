@@ -1,0 +1,42 @@
+
+1. Instalirati XAMPP te prebaciti cijeli folder u xampp\htdocs.
+
+2. Pokrenuti XAMPP control panel i kliknuti Start na: Apache i MySQL.
+
+3. Kliknuti Config gumb na MySQL (slika 1) i ući u my.ini file. U tom fajlu zalijepiti komandu: (slika 2)
+
+4. Save i restartati xampp.
+
+5. Otvoriti Firefox ili neki drugi preglednik i upisati: localhost u URL bar (tu se treba nalaziti cijeli folder koji je prebačen u prvom koraku).
+
+6. Kliknuti na taj folder (web stranica bi se trebala prikazati, u protivnom ponoviti prijašnje korake).
+
+7. Kliknuti na "Register", popuniti podatke i kliknuti na submit, zatim kliknuti na "Sign In" i pokušati se prijaviti prethodno unesenim podacima (ukoliko ne radi pogledati 8. korak) 
+
+8. Ukoliko 7. korak ne radi kliknuti Admin gumb na MySQL i kreirati novu bazu podataka imena webprog (slika 3).
+
+9. Otvoriti bazu, kliknuti tab "SQL" i ubaciti ove tablice: 
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `country` char(2) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `archive` enum('Y','N') NOT NULL DEFAULT 'Y'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `picture` varchar(255) NOT NULL,
+  `archive` enum('Y','N') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+10. Ponoviti 7. korak i testirati prijavu.
